@@ -1,0 +1,14 @@
+{
+  "name": "node-js-trials",
+  "description": "",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tayutaedomo/nodejs-trials.git"
+  },
+  "scripts": {},
+  "dependencies": {
+    "bluebird": "^3.4.1"
+  }
+}
