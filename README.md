@@ -11,5 +11,7 @@ $ node scripts/bluebird_why_promises_2.js
 ```
 $ node scripts/child_process_execsync.js
 $ node scripts/child_process_exec.js
+$ node scripts/child_process_bluebird.js
+$ node scripts/child_process_bluebird_2.js
 ```
 

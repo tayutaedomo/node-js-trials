@@ -5,7 +5,8 @@
 //
 
 var Promise = require('bluebird');
-var exec = require('child_process').execFile;
+//var exec = require('child_process').execFile;
+var exec = require('child_process').exec;
 
 function promiseFromChildProcess(child) {
   return new Promise(function (resolve, reject) {
@@ -14,7 +15,8 @@ function promiseFromChildProcess(child) {
   });
 }
 
-var child = exec('date');
+//var child = exec('date');
+var child = exec('exit 1');
 
 promiseFromChildProcess(child).then(function (result) {
   console.log('promise complete: ' + result);
