@@ -10,6 +10,7 @@
   "scripts": {},
   "dependencies": {
     "bluebird": "^3.4.1",
-    "needle": "^1.0.0"
+    "needle": "^1.0.0",
+    "q": "^1.4.1"
   }
 }
