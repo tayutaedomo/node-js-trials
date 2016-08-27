@@ -5,6 +5,7 @@ Try Node.js
 ```
 $ node scripts/bluebird_why_promises.js 
 $ node scripts/bluebird_why_promises_2.js 
+$ node scripts/bluebird_map_each.js 
 ```
 
 
