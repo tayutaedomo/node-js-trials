@@ -13,6 +13,7 @@
     "needle": "1.0.0",
     "q": "1.4.1",
     "request": "2.74.0",
+    "request-progress": "^3.0.0",
     "request-promise": "4.1.1"
   }
 }
