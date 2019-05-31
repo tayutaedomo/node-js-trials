@@ -10,6 +10,7 @@
   "scripts": {},
   "dependencies": {
     "bluebird": "3.4.1",
+    "favicons": "^5.4.0",
     "needle": "1.0.0",
     "q": "1.4.1",
     "request": "2.74.0",
