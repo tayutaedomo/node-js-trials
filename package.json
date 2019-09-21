@@ -7,7 +7,9 @@
     "type": "git",
     "url": "git://github.com/tayutaedomo/nodejs-trials.git"
   },
-  "scripts": {},
+  "scripts": {
+    "module_bundler_webpack": "./node_modules/.bin/webpack --config scripts/module_bundler/webpack/webpack.config.js --mode development"
+  },
   "dependencies": {
     "bluebird": "3.4.1",
     "needle": "1.0.0",
@@ -15,5 +17,9 @@
     "request": "2.74.0",
     "request-progress": "^3.0.0",
     "request-promise": "4.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
   }
 }
