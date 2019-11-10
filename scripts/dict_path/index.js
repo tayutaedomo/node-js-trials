@@ -36,19 +36,18 @@ function is_dict(v) {
 }
 
 
-// TODO
-const to_dict = (src, dest, path_list) => {
+const list_to_dict = (src, dest, path_list) => {
   dest = dest || {};
 
   if (! src) return dest;
 
   src.forEach(value => {
-    console.log(value);
+    objectPath.set(dest, value.path_str, value.value);
   });
 
   return dest;
 };
-exports.to_dict = to_dict;
+exports.list_to_dict = list_to_dict;
 
 
 
@@ -68,7 +67,7 @@ if (require.main === module) {
   const list = dict_to_list(data);
   console.log(list);
 
-  const dict = to_dict(list);
+  const dict = list_to_dict(list);
   console.log(dict);
 }
 
