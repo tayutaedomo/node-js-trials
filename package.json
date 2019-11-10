@@ -13,6 +13,7 @@
   "dependencies": {
     "bluebird": "3.4.1",
     "needle": "1.0.0",
+    "object-path": "^0.11.4",
     "q": "1.4.1",
     "request": "2.74.0",
     "request-progress": "^3.0.0",
