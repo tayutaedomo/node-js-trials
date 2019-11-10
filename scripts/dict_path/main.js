@@ -9,6 +9,6 @@ const data = {
   }
 };
 
-const list = dict_path.to_list(data);
+const list = dict_path.dict_to_list(data);
 console.log(list);
 

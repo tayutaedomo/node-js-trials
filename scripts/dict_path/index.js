@@ -1,5 +1,8 @@
 
-const to_list = (src, dest, path_list) => {
+const objectPath = require("object-path");
+
+
+const dict_to_list = (src, dest, path_list) => {
   dest = dest || [];
 
   if (! src) return dest;
@@ -11,7 +14,7 @@ const to_list = (src, dest, path_list) => {
     const value = src[key];
 
     if (is_dict(value)) {
-      to_list(value, dest, new_path_list);
+      dict_to_list(value, dest, new_path_list);
 
     } else {
       //console.log(new_path_list, src, value);
@@ -25,7 +28,7 @@ const to_list = (src, dest, path_list) => {
 
   return dest;
 };
-exports.to_list = to_list;
+exports.dict_to_list = dict_to_list;
 
 // Refer: https://stackoverflow.com/questions/38304401/javascript-check-if-dictionary
 function is_dict(v) {
@@ -62,7 +65,7 @@ if (require.main === module) {
     }
   };
 
-  const list = to_list(data);
+  const list = dict_to_list(data);
   console.log(list);
 
   const dict = to_dict(list);
