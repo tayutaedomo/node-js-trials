@@ -36,7 +36,8 @@ const create_driver = async () => {
     ]
   });
 
-  const chromedriver_path = path.join(__dirname, '..', '..', 'bin', 'chromedriver');
+  const CHROMEDRIVER_EXE = process.platform === 'win32' ? 'chromedriver.exe' : 'chromedriver';
+  const chromedriver_path = path.join(__dirname, '..', '..', 'bin', CHROMEDRIVER_EXE);
   const service_builder = new ServiceBuilder(chromedriver_path);
   const builder = new Builder().withCapabilities(capabilities).setChromeService(service_builder);
   const driver = await builder.build();
