@@ -8,7 +8,7 @@ const { By, until } = webdriver;
 const helper = require('./helper');
 
 
-const youtube_search = async () => {
+const main = async () => {
   const driver = await helper.create_driver();
 
   // Refer: https://qiita.com/tonio0720/items/70c13ad304154d95e4bc
@@ -27,7 +27,7 @@ const youtube_search = async () => {
 
 
 if (require.main === module) {
-  youtube_search().then(() => {
+  main().then(() => {
     console.log('Done');
   }).catch(result => {
     console.error(result);
