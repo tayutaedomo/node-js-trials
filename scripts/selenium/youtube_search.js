@@ -7,7 +7,7 @@ const { Builder, By, until } = webdriver;
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 
 
-const main = async () => {
+const youtube_search = async () => {
   const driver = await create_driver();
 
   // Refer: https://qiita.com/tonio0720/items/70c13ad304154d95e4bc
@@ -47,10 +47,11 @@ const create_driver = async () => {
 
 
 
-main().then(() => {
-  console.log('Done');
-
-}).catch(result => {
-  console.error(result);
-});
+if (require.main === module) {
+  youtube_search().then(() => {
+    console.log('Done');
+  }).catch(result => {
+    console.error(result);
+  });
+}
 
