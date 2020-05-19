@@ -14,24 +14,35 @@ const main = async () => {
   await driver.get('https://www.amazon.co.jp/s?k=mask');
 
   await driver.wait(until.elementLocated(By.css('.s-result-item')));
-  await driver.findElements(By.css('.s-result-item'))
-      .findElement(By.css('.a-link-normal')).click();
 
-  //await item_list.findElement(By.css('.a-link-normal')).click();
+  const link_text = 'Youmay マスク 使い捨てマスク 不織布 男女兼用 ホワイト 50枚入';
+  const link_text_elem = await driver.findElement(By.linkText(link_text))
+  console.log('By.linkText', link_text, link_text_elem);
+  if (link_text_elem) console.log('By.linkText', await link_text_elem.getText());
+  console.log('');
 
-  let base64 = await driver.takeScreenshot();
-  let buffer = Buffer.from(base64, 'base64');
+  // Cannot use ?
+  // const css_last_elem = await driver.findElement(By.css('div.s-result-item:last-child'));
+  // console.log('By.css, last-child', css_last_elem);
 
-  await promisify(fs.writeFile)('capture.jpg', buffer);
+  const css_elem_list = await driver.findElement(By.css('div.s-result-item a.a-link-normal img'));
+  console.log('By.css, Chain', css_elem_list);
+  if (css_elem_list) console.log('By.css, Chain', await css_elem_list.getAttribute('src'));
 
-  await driver.quit();
+
+  // let base64 = await driver.takeScreenshot();
+  // let buffer = Buffer.from(base64, 'base64');
+  //
+  // await promisify(fs.writeFile)('capture.jpg', buffer);
+
+  //await driver.quit();
 };
 
 
 
 if (require.main === module) {
   main().then(() => {
-    console.log('Done');
+    console.log('\nDone\n');
   }).catch(result => {
     console.error(result);
   });
