@@ -13,6 +13,8 @@ const main = async (email, password) => {
 
   await driver.get('https://www.amazon.co.jp/');
 
+
+  // Sign-in
   await driver.wait(until.elementLocated(By.id('nav-link-accountList')));
   await driver.findElement(By.id('nav-link-accountList')).click();
 
@@ -27,17 +29,20 @@ const main = async (email, password) => {
   await driver.wait(until.elementLocated(By.id('nav-orders')));
   await driver.findElement(By.id('nav-orders')).click();
 
-  // TODO: WIP
-  const box_list = driver.findElements(By.css('.a-box-group'));
-  const trigger_list = box_list.findElements(By.css('.a-popover-trigger'));
-  await trigger_list[trigger_list.length - 1].click();
 
-  await driver.findElement(By.css('.a-popover-trigger.a-declarative')).click();
+  // PDF download, first item
+  await driver.wait(until.elementLocated(By.linkText('領収書等')));
+  await driver.findElement(By.linkText('領収書等')).click();
 
+  await driver.wait(until.elementLocated(By.linkText('請求書 1')));
+  await driver.findElement(By.linkText('請求書 1')).click();
+
+
+  // Capture screenshot
   let base64 = await driver.takeScreenshot();
   let buffer = Buffer.from(base64, 'base64');
-
   await promisify(fs.writeFile)('capture.jpg', buffer);
+
 
   await driver.quit();
 };
