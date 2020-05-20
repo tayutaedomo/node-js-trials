@@ -19,7 +19,7 @@ const main = async () => {
   let base64 = await driver.takeScreenshot();
   let buffer = Buffer.from(base64, 'base64');
 
-  await promisify(fs.writeFile)('capture.jpg', buffer);
+  await promisify(fs.writeFile)('tmp/capture.jpg', buffer);
 
   await driver.quit();
 };

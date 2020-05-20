@@ -30,12 +30,12 @@ const main = async () => {
   if (css_elem_list) console.log('By.css, Chain', await css_elem_list.getAttribute('src'));
 
 
-  // let base64 = await driver.takeScreenshot();
-  // let buffer = Buffer.from(base64, 'base64');
-  //
-  // await promisify(fs.writeFile)('capture.jpg', buffer);
+  let base64 = await driver.takeScreenshot();
+  let buffer = Buffer.from(base64, 'base64');
 
-  //await driver.quit();
+  await promisify(fs.writeFile)('tmp/capture.jpg', buffer);
+
+  await driver.quit();
 };
 
 
