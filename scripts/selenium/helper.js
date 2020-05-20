@@ -1,22 +1,33 @@
 
 const path = require('path');
+const debug = require('debug')('node-js-trials:scripts:selenium:helper');
 
 const webdriver = require('selenium-webdriver');
 const { Builder } = webdriver;
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 
 
-const create_driver = async () => {
+const create_driver = async (options) => {
+  options = options || {};
+
   const capabilities = webdriver.Capabilities.chrome();
-  capabilities.set('chromeOptions', {
+
+  const chrome_options = {
     args: [
+      '--incognito',
       '--headless',
-      '--no-sandbox',
       '--disable-gpu',
-      `--window-size=1980,1200`
-      // other chrome options
-    ]
-  });
+      '--window-size=1280,800'
+    ],
+    w3c: false // Important!! Why?
+  };
+
+  if (options.args) chrome_options.args = options.args;
+  if (options.prefs) chrome_options.prefs = options.prefs;
+
+  debug('chrome_options:', chrome_options);
+
+  capabilities.set('chromeOptions', chrome_options);
 
   const CHROMEDRIVER_EXE = process.platform === 'win32' ? 'chromedriver.exe' : 'chromedriver';
   const chromedriver_path = path.join(__dirname, '..', '..', 'bin', CHROMEDRIVER_EXE);
